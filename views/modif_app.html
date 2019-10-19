@@ -4,10 +4,8 @@
 <head>
   <title>Title</title>
   <!-- Required meta tags -->
-
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
 
   <!-- Bootstrap CSS -->
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
@@ -16,28 +14,32 @@
 </head>
 
 <body>
-
  <!-- Bootstrap row and col -->
   <div class="container-fluid">
     <div class="row ">
-      <div class="col-3 bg-primary border  mw-100" style="height: 650px; position: fixed;">
+      <div class="col-3 bg-primary border  mw-100" style="height: 650px;
+      TEXT-ALIGN: CENTER" >
         <img src="./logo.png" class="img-fluid rounded-circle" alt="">
-        <h5><small class="text-uppercase text-nowrap text-white">Gestion des Tickets</small></h5>
+        <h5><small class="text-uppercase text-nowrap text-white ">Gestion des Tickets</small></h5>
         <ul class="nav flex-column">
           <li class="nav-item">
 
-            <a class="nav-link active text-white" href="#"><i class="fa fa-calendar mr-2"></i></i><span
+            <a class="nav-link active text-white" href="#" style="
+            TEXT-ALIGN: LEFT"><i class="fa fa-calendar mr-2"></i></i><span
                 class="text-secondary"></span>Session</span>
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link text-white" href="#"> <i class="fa fa-user mr-2"></i></i>Utilisateur</a>
+            <a class="nav-link text-white" href="#" style="
+            TEXT-ALIGN: LEFT"> <i class="fa fa-user mr-2"></i></i>Utilisateur</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link text-white" href="#"> <i class="fa fa-graduation-cap mr-2"></i>Référentiel</a>
+            <a class="nav-link text-white" href="#" style="
+            TEXT-ALIGN: LEFT"> <i class="fa fa-graduation-cap mr-2"></i>Référentiel</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link  text-white" href="#"> <i class="fa fa-graduation-cap mr-2"></i>Apprenant</a>
+            <a class="nav-link  text-white" href="#"style="
+            TEXT-ALIGN: LEFT"> <i class="fa fa-graduation-cap mr-2"></i>Apprenant</a>
           </li>
         </ul>
       </div>
@@ -65,12 +67,13 @@
               <li class="nav-item">
                 <a class="nav-link text-hiden" href="#"> <i class="fa fa-user mr-2"></i></i>Admin</a>
               </li>
-            </div>
+            </div> 
         </div>
         </ul>
-              
-          <h2 class="text-center">Modification d'un apprenant</h2>
-                <table class="table table-bordered table-hover">
+               <!-- Tableau -->
+
+          <h2 class="text-center">MODIFICATION D'UN APPRENANT</h2>
+                <table class="table table-bordered table-hover ">
                   <thead>
                      <tr>
                         <th>ID</th>
@@ -87,25 +90,27 @@
                      </tr>
                   </thead>
                   <tbody>
-                     <tr>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                     </tr>
-                     
-                  </tbody>
+                    <tr>
+                       <td></td>
+                       <td></td>
+                       <td></td>
+                       <td></td>
+                       <td></td>
+                       <td></td>
+                       <td></td>
+                       <td></td>
+                       <td></td>
+                       <td></td>
+                       <td></td>
+                    </tr>
+                    
+                 </tbody>
                </table>
 
+                <!-- FIN TABLEAU -->
 
-              <!-- bouton-->
+
+                <!-- bouton-->
                <div class="row">
                   <div class="col-3"> 
                     
@@ -113,13 +118,13 @@
 
                  <div class="col-3">
 
-                 <div class="col-sm-6">
-                  <button type="button" class="btn btn-block bg-secondary" style="width: 150px;">Annuler</button>
+                 <div class="col-sm-6 text-hide">
+                  <button type="button" class="btn btn-primary btn-block bg-secondary" style="width: 150px;">Annuler</button>
                 </div>
               </div>
 
               <div class="col-3"> 
-                <div class="col-sm-6">
+                <div class="col-sm-6 text-hide">
                   <button type="button" class="btn btn-danger btn-block" style="width: 150px;">Valider</button>
                 </div>
               </div>
@@ -128,7 +133,7 @@
                 
               </div>
               </div>
-
+             
       </div>
       </nav>
 
@@ -140,13 +145,11 @@
   </div>
   </div>
 
+                    <!-- CSS-->
+
   <style type="text/css">
     .bg-primary,.text-primary,.btn-primary {
       background-color: #0F878A !important;
-      ;
-    }
-    .bg-secondary,.text-secondary,.btn-secondary {
-      background-color: #EC7E07 !important;
       ;
     }
 
@@ -167,6 +170,11 @@
       margin-top: 50px;
       color:  #0F878A !important;
     }
+    .text-hide{
+       left: 20px;
+
+        display: inline;
+    }
     .text-hiden{
       color:  #0F878A !important;
     }
@@ -174,8 +182,10 @@
       color: #EC7E07 !important;
     }
 
-
-
+    .bg-secondary,.text-secondary,.btn-secondary {
+      background-color: #EC7E07 !important;
+      ;
+    }
   </style>
 
   <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"

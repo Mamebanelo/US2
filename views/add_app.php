@@ -1,3 +1,18 @@
+<?php
+          
+          
+                    include_once('db_connect.php');
+                    $query = $pdo->query("SELECT * FROM session");
+                    $sessions= $query->fetchAll(); 
+                    $query = $pdo->query("SELECT * FROM referentiel");
+                    $referentiels= $query->fetchAll();
+                    $query = $pdo->query("SELECT * FROM etat");
+                    $etats= $query->fetchAll();        
+?>
+
+
+
+
 <!doctype html>
 <html lang="en">
 
@@ -19,7 +34,7 @@
     <div class="row ">
       <!-- Side bar left -->
               <div class="col-3 bg-primary border  mw-100" style="height: 800px;">
-                    <img src="./logo.png" class="img-fluid rounded-circle" alt="">
+                    <img src="../public/img/logo.png" class="img-fluid rounded-circle" alt="">
                     <h5><small class="text-uppercase text-nowrap text-white ">Gestion des Tickets</small></h5>
                     <ul class="nav flex-column">
                       <li class="nav-item">
@@ -78,25 +93,24 @@
                     <!-- FIN HEADER -->
                   <!-- Formulaire -->
                   <h2 class="text-center">INSCRIRE UN APPRENNANT</h2>
-                  <form action="">
+                  <form action="../controllers/insert_app.php" method="POST">
 
                       <div class="row">
 
                                       <div class="col-6">
                                           <div class="form-group row">
-                                              <label for="prenom" class="col-sm-2 col-form-label">ID</label>
+                                              <label for="nom" class="col-sm-2 col-form-label">Nom</label>
                                               <div class="col-sm-9">
-                                              <input type="text" class="form-control" id="id" name="prenom" placeholder="ID">
+                                              <input type="text" class="form-control" id="id" name="nom" placeholder="nom">
                                             </div>
-                                          </div>
-                                          
+                                          </div>  
                                       </div>    
                                   
                                 <div class="col-6">
                                         <div class="form-group row">
-                                                <label for="mail" class="col-sm-2 col-form-label">Nom</label>
+                                                <label for="prenom" class="col-sm-2 col-form-label">Prénom</label>
                                                 <div class="col-sm-9">
-                                                <input type="text" class="form-control" id="nom" name="nom" placeholder="Nom">
+                                                <input type="text" class="form-control" id="nom" name="prenom" placeholder="prenom">
                                               </div>
                                         </div>
                                 </div>
@@ -104,17 +118,17 @@
                         <div class="row">
                             <div class="col-6">
                                     <div class="form-group row">
-                                            <label for="prenom" class="col-sm-2 col-form-label">Prenom</label>
+                                            <label for="date_nais" class="col-sm-2 col-form-label">Date de Naissance</label>
                                             <div class="col-sm-9">
-                                            <input type="text" class="form-control" id="prenom" name="prenom" placeholder="Prenom ">
+                                            <input type="date" class="form-control" id="date_nais" name="date_nais" placeholder="Date de naissance ">
                                             </div>
                                    </div>
                             </div>
                             <div class="col-6"> 
                                     <div class="form-group row">
-                                            <label for="mail" class="col-sm-2 col-form-label">E-mail</label>
+                                            <label for="lieu_nais" class="col-sm-2 col-form-label">Lieu de naissance</label>
                                             <div class="col-sm-9">
-                                              <input type="text" class="form-control" id="mail" name="mail" placeholder="E-mail">
+                                              <input type="text" class="form-control" id="lieu_nais" name="lieu_nais" placeholder="Lieu de naissance">
                                             </div>
                                     </div>
                              </div>
@@ -126,9 +140,9 @@
 
                       <div class="col-6">
                             <div class="form-group row">
-                                    <label for="dnaissance" class="col-sm-2 col-form-label text-dark text-wrap">Date naissance</label>
+                                    <label for="tel" class="col-sm-2 col-form-label text-dark text-wrap">Téléphone</label>
                                             <div class="col-sm-9">
-                                            <input type="text" class="form-control" id="dnaissance" name="dnaissance" placeholder="date de naissance ">
+                                            <input type="integer" class="form-control" id="telephone" name="telephone" placeholder="telephone">
                                             </div>
                                </div>
         
@@ -136,9 +150,9 @@
         
                             <div class="col-6">
                                     <div class="form-group row">
-                                            <label for="lnaissance" class="col-sm-2 col-form-label text-wrap">Lieu naissance</label>
+                                            <label for="adresse" class="col-sm-2 col-form-label text-wrap">Adresse</label>
                                             <div class="col-sm-9">
-                                            <input type="text" class="form-control" id="lnaissance" name="lnaissance" placeholder="lieu de naissance">
+                                            <input type="text" class="form-control" id="adresse" name="adresse" placeholder="Adresse">
                                             </div>
                                         </div>
                               </div>
@@ -147,9 +161,9 @@
                       <div class="row">
                           <div class="col-6">
                                   <div class="form-group row">
-                                          <label for="adresse" class="col-sm-2 col-form-label">Adresse</label>
+                                          <label for="email" class="col-sm-2 col-form-label">E-mail</label>
                                           <div class="col-sm-9">
-                                            <input type="text" class="form-control" id="adresse" name="adresse" placeholder="adresse">
+                                            <input type="text" class="form-control" id="email" name="email" placeholder="email">
                                           </div>
                                    </div>  
                           </div>
@@ -158,11 +172,16 @@
                                           <label for="ref" class="col-sm-2 col-form-label">Referentiel</label>
                                           <div class="col-sm-9">
                           
-                                              <select class="custom-select" id="ref" name="ref">
-                                                 <option selected>Referent Digital</option>
-                                                 <option value="1">Developpement Web</option>
-                                                 <option value="2">Data Artisan</option>   
-                                               </select> 
+                                          <select style="width: 300px" name="referentiel" id="referentiel">
+                                              <option value=""> </option>
+                                              <?php 
+                                                foreach ($referentiels as $key => $referentiel) {  
+                                              ?>
+                                            <option value="<?php echo $referentiel['numref'];?>"><?php echo $referentiel['Nom'];?></option> 
+                                            <?php
+                                              }
+                                            ?>
+                                          </select>
                                           </div>
                                       </div>
                       
@@ -174,12 +193,16 @@
                                       <label for="ref" class="col-sm-2 col-form-label">Sessions</label>
                                       <div class="col-sm-9">
                       
-                                          <select class="custom-select" id="ref" name="ref">
-                                          <option selected>Promo1</option>
-                                          <option value="1">Promo2</option>
-                                          <option value="2">Promo3</option>
-                                          
-                                          </select>
+                                      <select style="width: 300px" name="session" id="session">
+                                          <option value=""> </option> 
+                                          <?php 
+                                            foreach ($sessions as $key => $session) {  
+                                          ?>
+                                          <option value="<?php echo $session['ID'];?>"><?php echo $session['Nom'];?></option> 
+                                          <?php
+                                          }
+                                          ?> 
+                                      </select>
                                       </div>
                               </div>
                           </div>
@@ -189,12 +212,16 @@
                                         <label for="ref" class="col-sm-2 col-form-label">Etat</label>
                                         <div class="col-sm-9">
                         
-                                            <select class="custom-select" id="ref" name="ref">
-                                            <option selected>Neant</option>
-                                            <option value="1">Regulier</option>
-                                            <option value="2">Abandon</option>
-                                            
-                                            </select>
+                                        <select style="width: 300px" name="etat" id="etat">
+                                            <option value=""> </option> 
+                                            <?php 
+                                              foreach ($etats as $key => $etat) {  
+                                            ?>
+                                            <option value="<?php echo $etat['id_etat'];?>"><?php echo $etat['Nom'];?></option> 
+                                            <?php
+                                            }
+                                            ?> 
+                                        </select>
                                         </div>
                                 </div>
                         </div>
