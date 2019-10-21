@@ -2,12 +2,11 @@
           
           
                     include_once('db_connect.php');
-                    $query = $pdo->query("SELECT * FROM session");
-                    $sessions= $query->fetchAll(); 
-                    $query = $pdo->query("SELECT * FROM referentiel");
-                    $referentiels= $query->fetchAll();
+                   
                     $query = $pdo->query("SELECT * FROM etat");
-                    $etats= $query->fetchAll();        
+                    $etats= $query->fetchAll(); 
+                    $query = $pdo->query("SELECT * FROM ref_session");
+                    $ref_sessionS= $query->fetchAll();        
 ?>
 
 
@@ -169,15 +168,15 @@
                           </div>
                           <div class="col-6">
                                   <div class="form-group row">
-                                          <label for="ref" class="col-sm-2 col-form-label">Referentiel</label>
+                                          <label for="ref" class="col-sm-2 col-form-label">Referentiel ET Session</label>
                                           <div class="col-sm-9">
                           
-                                          <select style="width: 300px" name="referentiel" id="referentiel">
+                                          <select style="width: 300px" name="ref_session" id="ref_session">
                                               <option value=""> </option>
                                               <?php 
-                                                foreach ($referentiels as $key => $referentiel) {  
+                                                foreach ($ref_sessionS as $key => $ref_session) {  
                                               ?>
-                                            <option value="<?php echo $referentiel['numref'];?>"><?php echo $referentiel['Nom'];?></option> 
+                                            <option value="<?php echo $ref_session['ID_RS'];?>"><?php echo $ref_session['nom'];?></option> 
                                             <?php
                                               }
                                             ?>
@@ -188,24 +187,7 @@
                           </div>
                       </div>
                       <div class="row">
-                          <div class="col-6">
-                              <div class="form-group row">
-                                      <label for="ref" class="col-sm-2 col-form-label">Sessions</label>
-                                      <div class="col-sm-9">
-                      
-                                      <select style="width: 300px" name="session" id="session">
-                                          <option value=""> </option> 
-                                          <?php 
-                                            foreach ($sessions as $key => $session) {  
-                                          ?>
-                                          <option value="<?php echo $session['ID'];?>"><?php echo $session['Nom'];?></option> 
-                                          <?php
-                                          }
-                                          ?> 
-                                      </select>
-                                      </div>
-                              </div>
-                          </div>
+                          
                 
                         <div class="col-6">
                                 <div class="form-group row">

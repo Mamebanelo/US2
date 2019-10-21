@@ -8,8 +8,7 @@
        !empty($_POST["tel"]) && 
        !empty($_POST["adresse"]) && 
        !empty($_POST["email"]) && 
-       !empty($_POST["referentiel"]) && 
-       !empty($_POST["session"]) && 
+       !empty($_POST["ref_session"]) && 
        !empty($_POST["etat"]) 
     ) 
 {
@@ -20,8 +19,7 @@
                     $tel = $_POST["tel"];
                     $adresse = $_POST["adresse"];
                     $email = $_POST["email"];
-                    $referentiel = $_POST["referentiel"];
-                    $session = $_POST["session"];
+                    $ref_session = $_POST["ref_session"];
                     $etat = $_POST["etat"];
 
                     //Connexion à la base de données
@@ -29,7 +27,7 @@
 
                     //Ecriture de la requête
                     $requete="INSERT into `apprenant` ( `nom`, `prenom`, `date_nais`, `lieu_nais`, `tel`, 'adresse',
-                    'email', 'ID_RS', 'id_etat') values ('$nom','$prenom', '$date_nais', '$lieu_nais', '$tel','$adresse', '$email', '$', '$etat')";
+                    'email', 'ID_RS', 'id_etat') values ('$nom','$prenom', '$date_nais', '$lieu_nais', '$tel','$adresse', '$email', '$ref_session', '$etat')";
                     echo $requete;
                     
                     //Envoi de la requête
